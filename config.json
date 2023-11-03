@@ -1,0 +1,38 @@
+{
+    "appName": "Mail Delivery",
+    "version": "1.0.0",
+    "appBaseDir": "./",
+    "emailUser": "tesoreria@colegioparroquialsantarosa.com.ar",  
+    "emailPsw": "Lacasadepapel2020",      
+    "emailResponse": "administracion@cpsantarosa.edu.ar", 
+    "emailUserAlias": "CPSR Cupones <tesoreria@colegioparroquialsantarosa.com.ar>",
+    "maxSendFails": 5,  
+    "delaySend": 40,  
+    "delayFailSend": 600, 
+    "emailAsuntoGeneral": "Arancel Octubre",          
+    "dataBaseFile": "cuotas.db",
+    "cuotaBaseDir": "cuotas/",
+    "htmlToSend": "index.html",
+    "archivosAdjuntos": [
+        {
+            "descripcion": "Logo Escuela",
+            "nameFile": "image-1",
+            "extensionFile": ".png",
+            "pathFile": "./images/",
+            "headers":  { 
+                        "Content-Disposition" : "attachment; filename=_",
+                        "Content-ID": "<logo-png>"
+                        }
+        },
+        {
+            "descripcion": "Nota Barbijo",
+            "nameFile": "Barbijo",
+            "extensionFile": ".pdf",
+            "pathFile": "./adjuntos/",
+            "headers":  { 
+                        "Content-Disposition" : "attachment; filename= Barbijo.pdf"
+                        }
+        }
+    ],
+    "timeElapsed": 40
+}
