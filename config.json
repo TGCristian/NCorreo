@@ -9,7 +9,7 @@
     "maxSendFails": 5,  
     "delaySend": 40,  
     "delayFailSend": 600, 
-    "emailAsuntoGeneral": "Arancel Octubre",          
+    "emailAsuntoGeneral": "Matrícula CL2024",          
     "dataBaseFile": "cuotas.db",
     "cuotaBaseDir": "cuotas/",
     "htmlToSend": "index.html",
