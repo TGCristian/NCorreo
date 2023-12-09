@@ -24,7 +24,7 @@ try:
     with open(configFile, "r") as read_file:
         dataApp = load(read_file)
 except:
-    logging.critical("Problemas en el Archivo de Configuración")
+    logging.critical(": Problemas en el Archivo de Configuración")
     exit()
 
 try:
@@ -32,20 +32,21 @@ try:
         cursor = conn.execute("SELECT * from LISTADO")
         lista = cursor.fetchall()
 except:
-    logging.critical("Problemas en la BD")
+    logging.critical(": Problemas en la BD")
     exit()
 
    
 emailUser = dataApp["emailUser"]
 emailPsw = dataApp["emailPsw"]
 emailResponderA = dataApp["emailResponse"]
+logging.info(": Iniciando Envío")
 
 def adjuntarArchivo(emailMsg, rutaAdjunto, encabezados=None):
     try:
         with open(rutaAdjunto, "rb") as f:
             archivoAdjunto = MIMEApplication(f.read())
     except:
-        logging.warning("Problemas al Abrir Adjunto:" + rutaAdjunto)
+        logging.warning(": Problemas al Abrir Adjunto:" + rutaAdjunto)
         return()       
 
     if encabezados is not None:
@@ -68,7 +69,7 @@ for familia in lista:
             mt = MIMEText(f.read().decode(), "html")
             emailMsg.attach(mt)
     except:
-        logging.error("Problemas al Abrir HTML")       
+        logging.error(": Problemas al Abrir HTML")       
         exit()           
 
     for archivo in dataApp["archivosAdjuntos"]:
@@ -99,6 +100,7 @@ for familia in lista:
                 server.login(emailUser, emailPsw)
                 server.sendmail(emailUser, familia[3], email_string) 
                 sleep(dataApp["delaySend"])
+                logging.info(f': Envío Realizado a: {str(familia[1])} - Flia. {familia[2]}')
                 break
         except:
             sendFail += 1
@@ -110,7 +112,7 @@ for familia in lista:
     if (sendFail < dataApp["maxSendFails"]):
         sendFail = 0 
     else:
-        logging.error("Falló la Conexión")
+        logging.error(": Falló la Conexión")
         exit()
 
 #   print(datetime.now().strftime('%Y-%m-%d %H:%M:%S') +": Fallo al Enviar Intento " + str(sendFail) + " a: " + familia[3])

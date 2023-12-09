@@ -32,15 +32,6 @@
                         "Content-Disposition" : "attachment; filename=_",
                         "Content-ID": "<logo-png>"
                         }
-        },
-        {
-            "descripcion": "Nota Barbijo",
-            "nameFile": "Barbijo",
-            "extensionFile": ".pdf",
-            "pathFile": "./adjuntos/",
-            "headers":  { 
-                        "Content-Disposition" : "attachment; filename= Barbijo.pdf"
-                        }
         }
     ],
     "timeElapsed": 40
