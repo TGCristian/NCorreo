@@ -75,7 +75,7 @@ for familia in lista:
     for archivo in dataApp["archivosAdjuntos"]:
         adjuntarArchivo(emailMsg, archivo["pathFile"] + archivo["nameFile"] + archivo["extensionFile"], archivo["headers"])
 
-    if dataApp["cuponesSend"]:
+    if (dataApp["cuponesSend"] & familia[7]):
 
         cuotasDirs = os.scandir(dataApp["appBaseDir"] + dataApp["cuponesAdjuntos"]["pathFile"])
         cuotasFileType =  dataApp["cuponesAdjuntos"]["extensionFile"]
