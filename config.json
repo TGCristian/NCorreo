@@ -13,6 +13,15 @@
     "dataBaseFile": "cuotas.db",
     "cuotaBaseDir": "cuotas/",
     "htmlToSend": "index.html",
+    "cuponesSend": true,
+    "cuponesAdjuntos": {
+            "descripcion": "Carpeta Cuotas",
+            "extensionFile": ".pdf",
+            "pathFile": "cuotas/",
+            "headers":  { 
+                        "Content-Disposition" : "attachment; filename="
+                        }
+    },
     "archivosAdjuntos": [
         {
             "descripcion": "Logo Escuela",

@@ -14,6 +14,9 @@ __pycache__/
 build/
 develop-eggs/
 dist/
+adjuntos/
+cuotas/
+images/
 downloads/
 eggs/
 .eggs/

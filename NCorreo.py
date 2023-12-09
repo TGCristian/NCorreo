@@ -17,6 +17,7 @@ from email.mime.application import MIMEApplication
 configFile = "./config.json"
 sendFail = 0 
 
+
 logging.basicConfig(filename='info.log', encoding='utf-8', format='%(levelname)s: %(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p', level=logging.DEBUG)
 
 try:
@@ -33,7 +34,8 @@ try:
 except:
     logging.critical("Problemas en la BD")
     exit()
-    
+
+   
 emailUser = dataApp["emailUser"]
 emailPsw = dataApp["emailPsw"]
 emailResponderA = dataApp["emailResponse"]
@@ -71,6 +73,21 @@ for familia in lista:
 
     for archivo in dataApp["archivosAdjuntos"]:
         adjuntarArchivo(emailMsg, archivo["pathFile"] + archivo["nameFile"] + archivo["extensionFile"], archivo["headers"])
+
+    if dataApp["cuponesSend"]:
+
+        cuotasDirs = os.scandir(dataApp["appBaseDir"] + dataApp["cuponesAdjuntos"]["pathFile"])
+        cuotasFileType =  dataApp["cuponesAdjuntos"]["extensionFile"]
+        cuotasFileHeader = dataApp["cuponesAdjuntos"]["headers"]
+      
+        for dir in cuotasDirs:
+            cuponActual = os.path.abspath(dir.path + "/" + str(familia[1]) + cuotasFileType)
+            headerActual = cuotasFileHeader.copy()
+            headerActual["Content-Disposition"] = dataApp["cuponesAdjuntos"]["headers"]["Content-Disposition"] + dir.name + cuotasFileType
+
+            if os.path.isfile(cuponActual):
+                adjuntarArchivo(emailMsg, cuponActual, headerActual)
+
 
     email_string = emailMsg.as_string()
     context = ssl.create_default_context()
