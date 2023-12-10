@@ -29,7 +29,7 @@ except:
 
 try:
     with sqlite3.connect(dataApp["appBaseDir"] + dataApp["dataBaseFile"]) as conn:
-        cursor = conn.execute("SELECT * from SANTAROSA WHERE ID > 739")
+        cursor = conn.execute("SELECT * from SANTAROSA")
         lista = cursor.fetchall()
 except:
     logging.critical(": Problemas en la BD")
