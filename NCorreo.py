@@ -18,7 +18,11 @@ configFile = "./config.json"
 sendFail = 0 
 
 
-logging.basicConfig(filename='info.log', encoding='utf-8', format='%(levelname)s: %(asctime)s %(message)s', datefmt='%d/%m/%Y %I:%M:%S %p', level=logging.DEBUG)
+logging.basicConfig(handlers=[logging.FileHandler(filename="info.log", 
+                                                 encoding='utf-8', mode='a+')],
+                    format="%(levelname)s: %(asctime)s %(message)s", 
+                    datefmt="%d/%m/%Y %I:%M:%S %p", 
+                    level=logging.DEBUG)
 
 try:
     with open(configFile, "r", encoding='utf-8') as read_file:
@@ -29,7 +33,7 @@ except:
 
 try:
     with sqlite3.connect(dataApp["appBaseDir"] + dataApp["dataBaseFile"]) as conn:
-        cursor = conn.execute("SELECT * from SANTAROSA WHERE ID > 739")
+        cursor = conn.execute("SELECT * from SANTAROSA")
         lista = cursor.fetchall()
 except:
     logging.critical(": Problemas en la BD")

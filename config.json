@@ -9,11 +9,11 @@
     "maxSendFails": 5,  
     "delaySend": 40,  
     "delayFailSend": 600, 
-    "emailAsuntoGeneral": "Matrícula CL2024",          
+    "emailAsuntoGeneral": "Nuevo Canal WhatsApp",          
     "dataBaseFile": "cuotas.db",
     "cuotaBaseDir": "cuotas/",
     "htmlToSend": "index.html",
-    "cuponesSend": true,
+    "cuponesSend": false,
     "cuponesAdjuntos": {
             "descripcion": "Carpeta Cuotas",
             "extensionFile": ".pdf",
