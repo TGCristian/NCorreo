@@ -9,11 +9,11 @@
     "maxSendFails": 5,  
     "delaySend": 40,  
     "delayFailSend": 600, 
-    "emailAsuntoGeneral": "Nuevo Canal WhatsApp",          
+    "emailAsuntoGeneral": "Notificación",          
     "dataBaseFile": "cuotas.db",
     "cuotaBaseDir": "cuotas/",
     "htmlToSend": "index.html",
-    "cuponesSend": false,
+    "cuponesSend": true,
     "cuponesAdjuntos": {
             "descripcion": "Carpeta Cuotas",
             "extensionFile": ".pdf",
@@ -32,7 +32,16 @@
                         "Content-Disposition" : "attachment; filename=_",
                         "Content-ID": "<logo-png>"
                         }
-        }
+        },
+        {
+            "descripcion": "Nota Aranceles",
+            "nameFile": "Nota Aranceles CL2024 Marzo",
+            "extensionFile": ".pdf",
+            "pathFile": "./",
+            "headers":  { 
+                        "Content-Disposition" : "attachment; filename= Aranceles CL2024 Marzo.pdf"
+                        }
+        }          
     ],
     "timeElapsed": 40
 }
